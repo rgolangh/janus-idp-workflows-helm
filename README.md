@@ -11,6 +11,10 @@ There is also a starter serverless workflow under the default namespace.
 
 ## Installation
 
+[!Note]
+Due to a janus CI probelm the 'latest' image doesn't work out of the box. Eithr change the 
+the image ref to one of the `nighly-X` listed [here](https://quay.io/repository/janus-idp/backstage-showcase?tab=tags) in the deployement or directly under the `charts/` folder.
+
 Prerequisites:
   - Running OpenShift cluster, storage needed.
   - oc

@@ -1,0 +1,12 @@
+appName: janus-idp-workflows
+
+namespace: default
+
+serviceAccountName: janus-idp-workflows-sa
+
+labels:
+  - foo: bar
+  - app: janus-idp-workflows
+
+
+flowName: starter

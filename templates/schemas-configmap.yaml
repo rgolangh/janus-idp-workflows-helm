@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: schemas
+  namespace: {{ .Values.namespace }}
+data:
+  input.json: |2
+      {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "color": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "color"
+          ]
+      }
+    output.json: |2
+        {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "title": "Expression Output",
+            "description": "Output schema for expression example",
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type" : "number",
+                    "description": "Maximum value on x"
+                }
+            },
+            "required": ["result"]
+        }

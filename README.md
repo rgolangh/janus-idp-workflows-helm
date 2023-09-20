@@ -11,9 +11,9 @@ There is also a starter serverless workflow under the default namespace.
 
 ## Installation
 
-[!Note]
-Due to a janus CI probelm the 'latest' image doesn't work out of the box. Eithr change the 
-the image ref to one of the `nighly-X` listed [here](https://quay.io/repository/janus-idp/backstage-showcase?tab=tags) in the deployement or directly under the `charts/` folder.
+> NOTE
+> Due to a janus CI probelm the 'latest' image doesn't work out of the box. Eithr change the 
+> the image ref to one of the `nighly-X` listed [here](https://quay.io/repository/janus-idp/backstage-showcase?tab=tags) in the deployement or directly under the `charts/` folder.
 
 Prerequisites:
   - Running OpenShift cluster, storage needed.
@@ -21,18 +21,23 @@ Prerequisites:
   - helm
 
 
+Build and Install
 ```bash
 
 git clone https://github.com/rgolangh/janus-idp-workflows-helm
 
 cd janus-idp-workflows-helm
 
+helm dependencies build
 helm install janus-idp-workflows .
 
-# output should look like that
-8:18 $ helm install  janus-idp-workflows-white .
-Release "janus-idp-workflows-white" has been upgraded. Happy Helming!
-NAME: janus-idp-workflows-white
+```
+
+Output should look like that
+```console
+$ helm install janus-idp-workflows .
+Release "janus-idp-workflows" has been upgraded. Happy Helming!
+NAME: janus-idp-workflows
 LAST DEPLOYED: Tue Sep 19 18:19:07 2023
 NAMESPACE: default
 STATUS: deployed

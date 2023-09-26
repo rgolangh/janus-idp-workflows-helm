@@ -24,7 +24,10 @@ version: 0.1.0
 appVersion: "0.0.1"
 
 dependencies:
-  
   - name: backstage
     repository: https://janus-idp.github.io/helm-backstage
     version: "2.4.0"
+  - name: postgresql-persistent
+    repository: https://sclorg.github.io/helm-charts
+    version: "0.0.1"
+

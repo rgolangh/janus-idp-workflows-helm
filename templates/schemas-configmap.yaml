@@ -17,17 +17,17 @@ data:
             "color"
           ]
       }
-    output.json: |2
-        {
-            "$schema": "http://json-schema.org/draft-04/schema#",
-            "title": "Expression Output",
-            "description": "Output schema for expression example",
-            "type": "object",
-            "properties": {
-                "result": {
-                    "type" : "number",
-                    "description": "Maximum value on x"
-                }
-            },
-            "required": ["result"]
-        }
+  output.json: |2
+      {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "Expression Output",
+          "description": "Output schema for expression example",
+          "type": "object",
+          "properties": {
+              "result": {
+                  "type" : "number",
+                  "description": "Maximum value on x"
+              }
+          },
+          "required": ["result"]
+      }

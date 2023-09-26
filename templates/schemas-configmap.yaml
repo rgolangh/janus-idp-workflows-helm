@@ -4,7 +4,7 @@ metadata:
   name: schemas
   namespace: {{ .Values.namespace }}
 data:
-  input.json: |2
+  input.json: |
       {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
@@ -17,7 +17,7 @@ data:
             "color"
           ]
       }
-  output.json: |2
+  output.json: |
       {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "title": "Expression Output",

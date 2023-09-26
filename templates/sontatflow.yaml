@@ -2,11 +2,11 @@ apiVersion: sonataflow.org/v1alpha08
 kind: SonataFlow
 metadata:
   name: {{ .Values.flowName }}
-┊ annotations:
-┊ ┊ sonataflow.org/description: Starter flow
-┊ ┊ sonataflow.org/version: 0.0.1
+  annotations:
+    sonataflow.org/description: Starter flow
+    sonataflow.org/version: 0.0.1
 spec:
-┊ flow:
+  flow:
     specVersion: 0.8
     id: starterflow
     annotations:
@@ -19,9 +19,9 @@ spec:
         outputSchema: schema/ouput.json
     resources:
       configMaps:
-      ┊ - configMap:
-      ┊ ┊ ┊  name: openapi-specs
-      ┊ ┊ workflowPath: specs
+        - configMap:
+             name: openapi-specs
+          workflowPath: specs
     timeouts:
       workflowExecTimeout: PT24H
     start: restcall

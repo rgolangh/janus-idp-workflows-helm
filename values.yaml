@@ -8,3 +8,17 @@ labels:
   - app: janus-idp-workflows
 
 flowName: starter
+
+postgresql-persistent:
+  database_service_name: workflows-db
+  memory_limit: 512Mi
+  namespace: default 
+  volume_capacity: 1Gi
+  config:
+    postgresql_database: testdb
+    postgresql_password: testp
+    postgresql_user: testu
+    port: 5432
+  image:
+    tag: "latest"
+

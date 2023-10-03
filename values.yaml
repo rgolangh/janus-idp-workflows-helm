@@ -22,3 +22,10 @@ postgresql-persistent:
   image:
     tag: "latest"
 
+
+# override Janus image with one with the orchestrator plugin
+backstage:
+  upstream:
+    backstage:
+      image:
+        repository: rgolangh/orchestrator

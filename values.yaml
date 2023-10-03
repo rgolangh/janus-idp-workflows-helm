@@ -1,6 +1,8 @@
 appName: janus-idp-workflows
 
-namespace: default
+global:
+  devmode:
+    image: quay.io/kiegroup/kogito-swf-devmode-nightly:latest
 
 serviceAccountName: janus-idp-workflows-sa
 
@@ -9,10 +11,23 @@ labels:
 
 flowName: starter
 
+devmode:
+  enabled: true
+  image: quay.io/kiegroup/kogito-swf-devmode-nightly:main-2023-08-30
+
+sonataflow-operator:
+  enabled: false
+  dataindex:
+    image: quay.io/kiegroup/kogito-data-index-ephemeral
+
+workflows:
+  enabled: false
+
 postgresql-persistent:
+  # depends on sonataflow-operator
+  enabled: false
   database_service_name: workflows-db
   memory_limit: 512Mi
-  namespace: default 
   volume_capacity: 1Gi
   config:
     postgresql_database: testdb
@@ -22,10 +37,21 @@ postgresql-persistent:
   image:
     tag: "latest"
 
-
 # override Janus image with one with the orchestrator plugin
-backstage:
+backstage: 
   upstream:
     backstage:
       image:
         repository: rgolangh/orchestrator
+      appConfig:
+        orchestrator:
+          catalog:
+            environment: development
+          sonataFlowService:
+            # make this conditional devmode || sonataflow-operator
+            baseUrl: http://devmode.{{ .Release.Namespace }}.svc.cluster.local
+            port: 80
+            path: /
+            workflowsSource:
+              localPath: /tmp
+              gitRepositoryUrl: https://github.com/tiagodolphine/backstage-orchestrator-work

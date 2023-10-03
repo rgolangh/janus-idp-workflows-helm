@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: devmode
+  name: devmode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devmode
+  template:
+    metadata:
+      labels:
+        app: devmode
+    spec:
+      containers:
+        - name: devmode
+          image: {{ .Values.global.devmode.image }}
+          env:
+            - name: KOGITO.CODEGEN.PROCESS.FAILONERROR
+              value: "false"
+
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 800m
+              memory: 3G
+            requests:
+              cpu: 5m
+              memory: 64Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+          volumeMounts:
+            - name: sonata-resources
+              mountPath: /home/kogito/serverless-workflow-project/src/main/resources
+      volumes:
+        - name: sonata-resources
+          configMap:
+            name: devmode-resources

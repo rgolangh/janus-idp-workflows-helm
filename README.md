@@ -35,7 +35,7 @@ Build and Install
 
 git clone https://github.com/rgolangh/janus-idp-workflows-helm
 
-cd janus-idp-workflows-helm
+cd janus-idp-workflows-helm/charts/jaunus-idp-workflows
 
 helm dependencies build
 helm install janus-idp-workflows .

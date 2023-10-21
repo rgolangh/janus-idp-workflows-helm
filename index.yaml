@@ -1,0 +1,33 @@
+apiVersion: v1
+entries:
+  janus-idp-workflows:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-10-21T04:22:13.0607847Z"
+    dependencies:
+    - name: backstage
+      repository: https://janus-idp.github.io/helm-backstage
+      version: 2.4.0
+    - name: postgresql-persistent
+      repository: https://sclorg.github.io/helm-charts
+      version: 0.0.3
+    - condition: devmode.enabled
+      name: devmode
+      repository: file://devmode
+      version: 0.1.0
+    - condition: sonataflow-operator.enabled
+      name: sonataflow-operator
+      repository: file://sonataflow-operator
+      version: 0.1.0
+    - condition: workflows.enabled
+      name: workflows
+      repository: file://workflows
+      version: 0.1.0
+    description: A Helm chart for Kubernetes
+    digest: 1d75c059cbebec4b12d793b335bfb0a54f8eb7e4edf5e6ab8eb978cdb2e3970d
+    name: janus-idp-workflows
+    type: application
+    urls:
+    - https://github.com/rgolangh/janus-idp-workflows-helm/releases/download/janus-idp-workflows-0.1.1/janus-idp-workflows-0.1.1.tgz
+    version: 0.1.1
+generated: "2023-10-21T04:22:13.060797001Z"

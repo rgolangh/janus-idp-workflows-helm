@@ -32,7 +32,7 @@ Prerequisites:
 > NOTE: Installing on k8s, kind or minukube, version >= 0.1.2, disable route usage:
 
 ```bash
-helm uninstall janus-idp-workflows janus-idp-workflows/janus-idp-workflows --set backstage.route.enabled=false
+helm install janus-idp-workflows janus-idp-workflows/janus-idp-workflows --set backstage.route.enabled=false
 ```
 
 Build and Install

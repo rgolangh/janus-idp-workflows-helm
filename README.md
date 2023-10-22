@@ -39,3 +39,10 @@ helm repo add janus-idp-workflows https://rgolangh.github.io/janus-idp-workflows
 helm install janus-idp-workflows janus-idp-workflows/janus-idp-workflows
 ```
 
+
+### Installing on kind or minikube
+
+Disable openshift route usage by setting backstage.route.enabled=false:
+```bash
+ helm uninstall janus-idp-workflows janus-idp-workflows/janus-idp-workflows --set backstage.route.enabled=false
+ ```

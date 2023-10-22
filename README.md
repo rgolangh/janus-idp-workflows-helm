@@ -29,6 +29,11 @@ Prerequisites:
   - oc
   - helm
 
+> NOTE: Installing on k8s, kind or minukube, version >= 0.1.2, disable route usage:
+
+```bash
+helm uninstall janus-idp-workflows janus-idp-workflows/janus-idp-workflows --set backstage.route.enabled=false
+```
 
 Build and Install
 ```bash
@@ -41,6 +46,7 @@ helm dependencies build
 helm install janus-idp-workflows .
 
 ```
+
 
 Output should look like that
 ```console

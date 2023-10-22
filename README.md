@@ -11,6 +11,28 @@ There is also a starter serverless workflow under the default namespace.
 
 ## Installation
 
+### Using OCP developer catalog
+
+Add the helm chart resource to the catalog
+
+
+```bash
+cat <<EOF | oc create -f -
+apiVersion: helm.openshift.io/v1beta1
+kind: HelmChartRepository
+metadata:
+  name: janus-idp-workflows
+spec:
+  connectionConfig:
+    url: https://rgolangh.github.io/janus-idp-workflows-helm/
+EOF
+```
+
+After few seconds, 'Helm' section under the developer perspective will present that chart repository, ready to use. 
+From the 'Helm Releases' view click the 'Create' button and 'Helm Release' , locate and use the workflows chart search bar.
+
+
+### Using CLI
 ```bash
 helm repo add janus-idp-workflows https://rgolangh.github.io/janus-idp-workflows-helm
 

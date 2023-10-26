@@ -1,6 +1,8 @@
 appName: janus-idp-workflows
 
 global:
+  # false means kind, minikube
+  openshift: true
   devmode:
     image: quay.io/kiegroup/kogito-swf-devmode-nightly:latest
 
@@ -44,6 +46,11 @@ backstage:
       image:
         repository: rgolangh/orchestrator
       appConfig:
+        backend:
+          csp:
+            default-src: ["'unsafe-eval'", "data:", "script-src-attr", "'self'", 'http:', 'https:']
+            connect-src: ["'self'", "data:", 'http:', 'https:']
+            script-src:  ["'unsafe-inline'", "'unsafe-eval'", "script-src-attr", "'self'", 'http:', 'https:']
         orchestrator:
           catalog:
             environment: development
@@ -55,3 +62,8 @@ backstage:
             workflowsSource:
               localPath: /tmp
               gitRepositoryUrl: https://github.com/tiagodolphine/backstage-orchestrator-work
+          editor:
+            path: /api/proxy/workflow-editor
+        proxy:
+          endpoints:
+            /workflow-editor: https://start.kubesmarts.org/

@@ -1,6 +1,7 @@
 
 specVersion: "0.8"
 id: starter
+name: starter
 annotations:
   - workflow-type/infrastructure
 dataInputSchema:

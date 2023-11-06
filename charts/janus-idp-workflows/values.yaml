@@ -14,13 +14,16 @@ labels:
 flowName: starter
 
 devmode:
-  enabled: true
+  enabled: false
   image: quay.io/kiegroup/kogito-swf-devmode-nightly:main-2023-08-30
 
 sonataflow-operator:
-  enabled: false
+  enabled: true
   dataindex:
     image: quay.io/kiegroup/kogito-data-index-ephemeral
+
+serverless-knative:
+  enabled: true
 
 workflows:
   enabled: false

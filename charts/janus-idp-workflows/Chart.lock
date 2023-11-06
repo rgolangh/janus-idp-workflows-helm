@@ -11,8 +11,11 @@ dependencies:
 - name: sonataflow-operator
   repository: file://sonataflow-operator
   version: 0.1.0
+- name: serverless-knative
+  repository: file://serverless-knative
+  version: 0.1.0
 - name: workflows
   repository: file://workflows
   version: 0.1.0
-digest: sha256:3070aea096fb5ba22f1596f7fcbd6d05d14e6ca76658b0ab0491d2fc0fd2ae8a
-generated: "2023-10-22T19:18:37.119367259+03:00"
+digest: sha256:730f3e8143a5a444952fad764d31c4fd258643d14e9062add9bf3146827b0ff3
+generated: "2023-11-06T13:36:12.531193495+02:00"

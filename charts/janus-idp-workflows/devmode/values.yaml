@@ -1,7 +1,0 @@
-# Default values for devmode.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
-
-image: quay.io/kiegroup/kogito-swf-devmode-nightly:main-2023-08-3

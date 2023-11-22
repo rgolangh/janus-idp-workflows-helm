@@ -11,40 +11,38 @@ There is also a starter serverless workflow under the default namespace.
 
 ## Installation
 
-### Chart repo
+### Installing on k8s
+The default `values.yaml` work on OCP. Use the additional values-k8s.yaml when installing on k8s:
 
-```bash
+#### Installing from source chart repo
+```console
+helm install janus-idp-workflows charts/janus-idp-workflows -f charts/janus-idp-workflows/values.yaml  -f charts/janus-idp-workflows/values-k8s.yaml
+```
+
+#### Install from a released chart
+
+```console
 helm repo add janus-idp-workflows https://rgolangh.github.io/janus-idp-workflows-helm
 
 helm install janus-idp-workflows janus-idp-workflows/janus-idp-workflows
 ```
 
-### From git repo
-> NOTE
-> Due to a janus CI probelm the 'latest' image doesn't work out of the box. Eithr change the 
-> the image ref to one of the `nighly-X` listed [here](https://quay.io/repository/janus-idp/backstage-showcase?tab=tags) in the deployement or directly under the `charts/` folder.
+Note: the installation defaults to Openshift. To override and use k8s use this:
 
-Prerequisites:
-  - Running OpenShift cluster, storage needed.
-  - oc
-  - helm
-
-> NOTE: Installing on k8s, kind or minukube, version >= 0.1.2, disable route usage:
-
-```bash
-helm install janus-idp-workflows janus-idp-workflows/janus-idp-workflows --set backstage.route.enabled=false
+```console
+helm install janus-idp-workflows janus-idp-workflows/janus-idp-workflows \
+    --set-json='{"backstage":{"route":{"enabled":false}},"global":{"openshift":false},"serverless-knative":{"kubernetes":{"enabled":true},"openshift":{"enabled":false}}}
+'
 ```
 
-Build and Install
-```bash
-
+## Development
+```console
 git clone https://github.com/rgolangh/janus-idp-workflows-helm
 
 cd janus-idp-workflows-helm/charts/jaunus-idp-workflows
 
 helm dependencies build
-helm install janus-idp-workflows .
-
+helm install janus-idp-workflows . -f values.yaml -f values-k8s.yaml
 ```
 
 

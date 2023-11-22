@@ -1,7 +1,0 @@
-dataindex:
-  image: quay.io/kiegroup/kogito-data-index-ephemeral
-
-operator:
-  #image: quay.io/kiegroup/kogito-serverless-operator:1.44
-  image: quay.io/rgolangh/kogito-serverless-operator:v1
-

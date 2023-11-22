@@ -1,0 +1,15 @@
+# This value file is specific for installing on k8s
+global:
+  # false means k8s
+  openshift: false
+
+serverless-knative:
+  openshift:
+    enabled: false
+  kubernetes:
+    enabled: true
+
+backstage: 
+  route:
+    # Disabling route on k8s (missing openshift CRD)
+    enabled: false

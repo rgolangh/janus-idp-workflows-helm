@@ -3,19 +3,10 @@ appName: janus-idp-workflows
 global:
   # false means kind, minikube
   openshift: true
-  devmode:
-    image: quay.io/kiegroup/kogito-swf-devmode-nightly:latest
-
-serviceAccountName: janus-idp-workflows-sa
-
-labels:
-  - app: janus-idp-workflows
-
-flowName: starter
-
+ 
 devmode:
-  enabled: false
-  image: quay.io/kiegroup/kogito-swf-devmode-nightly:main-2023-08-30
+  enabled: true
+  image: quay.io/kiegroup/kogito-swf-devmode-nightly:main-2024-01-03
 
 sonataflow-operator:
   enabled: true
@@ -23,13 +14,19 @@ sonataflow-operator:
     image: quay.io/kiegroup/kogito-data-index-ephemeral
 
 serverless-knative:
-  enabled: true
+  openshift:
+    enabled: true
 
 workflows:
-  enabled: false
+  enabled: true
+
+serviceAccountName: janus-idp-workflows-sa
+
+labels:
+  - app: janus-idp-workflows
 
 postgresql-persistent:
-  # depends on sonataflow-operator
+  # depends on sonataflow-operator which still uses the ephemeral image. 
   enabled: false
   database_service_name: workflows-db
   memory_limit: 512Mi
@@ -43,22 +40,32 @@ postgresql-persistent:
     tag: "latest"
 
 # override Janus image with one with the orchestrator plugin
+# May change with dynamic plugin support
 backstage: 
+  route:
+    # set to false for kubernetes
+    enabled: true
   upstream:
     backstage:
       image:
+        # TODO update the recent image with the dynamic plugin (ask masayg)
         repository: rgolangh/orchestrator
       appConfig:
         backend:
           csp:
-            default-src: ["'unsafe-eval'", "data:", "script-src-attr", "'self'", 'http:', 'https:']
-            connect-src: ["'self'", "data:", 'http:', 'https:']
-            script-src:  ["'unsafe-inline'", "'unsafe-eval'", "script-src-attr", "'self'", 'http:', 'https:']
+            frame-src:
+              - "https://sandbox.kie.org"
+                #default-src: ["'unsafe-eval'", "data:", "script-src-attr", "'self'", 'http:', 'https:']
+                #connect-src: ["'self'", "data:", 'http:', 'https:']
+                #script-src:  ["'unsafe-inline'", "'unsafe-eval'", "script-src-attr", "'self'", 'http:', 'https:']
         orchestrator:
           catalog:
             environment: development
           sonataFlowService:
-            # make this conditional devmode || sonataflow-operator
+            # Pending fixes that will make this work exclusively with data-index
+            # TODO maybe can make this conditional devmode || sonataflow-operator
+            # or deploy devmode _as_ a sonataflow resource(may comply with the 
+            # current deployment plan for whole orchestrator with Janus) - TBD
             baseUrl: http://devmode.{{ .Release.Namespace }}.svc.cluster.local
             port: 80
             path: /
@@ -66,7 +73,5 @@ backstage:
               localPath: /tmp
               gitRepositoryUrl: https://github.com/tiagodolphine/backstage-orchestrator-work
           editor:
-            path: /api/proxy/workflow-editor
-        proxy:
-          endpoints:
-            /workflow-editor: https://start.kubesmarts.org/
+            #path: /api/proxy/workflow-editor
+            path: "https://sandbox.kie.org/swf-chrome-extension/0.32.0"

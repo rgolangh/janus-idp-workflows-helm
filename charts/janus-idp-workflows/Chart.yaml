@@ -13,19 +13,8 @@ dependencies:
     repository: https://sclorg.github.io/helm-charts
     version: "0.0.3"
     condition: postgresql-persistent.enabled
-  - name: devmode
-    version: 0.1.0
-    repository: file://devmode
-    condition: devmode.enabled
-  - name: sonataflow-operator 
-    version: 0.1.0
-    repository: file://sonataflow-operator
-    condition: sonataflow-operator.enabled
-  - name: serverless-knative
-    version: 0.1.0
-    repository: file://serverless-knative
-    condition: serverless-knative.enabled
   - name: workflows
-    version: 0.1.0
-    repository: file://workflows
+    repository: https://parodos-dev.github.io/serverless-workflows-helm
+    version: "0.1.7"
     condition: workflows.enabled
+

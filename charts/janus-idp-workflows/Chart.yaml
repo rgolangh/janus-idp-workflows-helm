@@ -8,13 +8,13 @@ appVersion: "0.0.1"
 dependencies:
   - name: backstage
     repository: https://janus-idp.github.io/helm-backstage
-    version: "2.4.0"
+    version: "2.11.4"
   - name: postgresql-persistent
     repository: https://sclorg.github.io/helm-charts
     version: "0.0.3"
     condition: postgresql-persistent.enabled
   - name: workflows
-    repository: https://parodos-dev.github.io/serverless-workflows-helm
+    repository: https://rgolangh.github.io/serverless-workflows-helm
     version: "0.1.7"
     condition: workflows.enabled
 

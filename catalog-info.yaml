@@ -4,6 +4,7 @@ metadata:
   name: janus-idp-workflows-helm
   annotations:
     github.com/project-slug: rgolangh/janus-idp-workflows-helm
+    backstage.io/techdocs-ref: value
 spec:
   type: other
   lifecycle: unknown

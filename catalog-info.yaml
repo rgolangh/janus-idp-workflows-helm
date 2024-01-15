@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: janus-idp-workflows-helm
+  annotations:
+    github.com/project-slug: rgolangh/janus-idp-workflows-helm
+spec:
+  type: other
+  lifecycle: unknown
+  owner: redhat/ecosystem-engineering

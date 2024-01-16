@@ -3,6 +3,28 @@ entries:
   janus-idp-workflows:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2024-01-16T14:30:05.590639741Z"
+    dependencies:
+    - name: backstage
+      repository: https://janus-idp.github.io/helm-backstage
+      version: 2.11.4
+    - condition: postgresql-persistent.enabled
+      name: postgresql-persistent
+      repository: https://sclorg.github.io/helm-charts
+      version: 0.0.3
+    - condition: workflows.enabled
+      name: workflows
+      repository: https://rgolangh.github.io/serverless-workflows-helm
+      version: 0.1.7
+    description: A Helm chart for Kubernetes
+    digest: ae355ca4e38356cdef10ad23f0f3b92f923172a8976f7817d738cc079425f2ea
+    name: janus-idp-workflows
+    type: application
+    urls:
+    - https://github.com/rgolangh/janus-idp-workflows-helm/releases/download/janus-idp-workflows-0.1.4/janus-idp-workflows-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-10-31T09:01:09.564368566Z"
     dependencies:
     - name: backstage
@@ -90,4 +112,4 @@ entries:
     urls:
     - https://github.com/rgolangh/janus-idp-workflows-helm/releases/download/janus-idp-workflows-0.1.1/janus-idp-workflows-0.1.1.tgz
     version: 0.1.1
-generated: "2023-10-31T09:01:09.564386766Z"
+generated: "2024-01-16T14:30:05.590664167Z"

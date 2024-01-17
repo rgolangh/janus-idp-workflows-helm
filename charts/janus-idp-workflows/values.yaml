@@ -5,13 +5,11 @@ global:
   openshift: true
  
 devmode:
-  enabled: true
+  enabled: false
   image: quay.io/kiegroup/kogito-swf-devmode-nightly:main-2024-01-03
 
 sonataflow-operator:
   enabled: true
-  dataindex:
-    image: quay.io/kiegroup/kogito-data-index-ephemeral
 
 serverless-knative:
   openshift:
@@ -48,46 +46,35 @@ backstage:
   global:
     dynamic:
       includes:
-        - dynamic-plugins.default.yaml
+      - dynamic-plugins.default.yaml
       plugins:
-        - disabled: false
-          integrity: >-
-            sha512-asBtNsRpAuy1JBRbK/9Qb+ChWtpU3p1HmDv/Y9PbNaLDEAlcGy5Aq+waEZ9N6x31wL9wTg0L64cS/d+IBG3e5A==
-          package: "@caponetto-tests/backstage-plugin-orchestrator-backend-dynamic@0.0.5"
-          pluginConfig:
-            orchestrator:
-              sonataFlowService:
-                # Pending fixes that will make this work exclusively with data-index
-                # TODO maybe can make this conditional devmode || sonataflow-operator
-                # or deploy devmode _as_ a sonataflow resource(may comply with the 
-                # current deployment plan for whole orchestrator with Janus) - TBD
-                baseUrl: http://devmode.{{ .Release.Namespace }}.svc.cluster.local
-                port: 80
-                path: /
-                workflowsSource:
-                  localPath: /tmp
-                  gitRepositoryUrl: https://github.com/tiagodolphine/backstage-orchestrator-work
-              editor:
-                path: "https://sandbox.kie.org/swf-chrome-extension/0.32.0"
-        - disabled: false
-          integrity: >-
-            sha512-5W80xP7Ojal9f/AiAEzChEtSz13cdd4krF+TtDaMs0enYB++HTOHjH7dmk5YM2BtmmP7H9Byh1i+IYkUJL5rIw==
-          package: "@caponetto-tests/backstage-plugin-orchestrator@0.0.5"
-          pluginConfig:
-            dynamicPlugins:
-              frontend:
-                caponetto-tests.backstage-plugin-orchestrator:
-                  appIcons:
-                    - importName: OrchestratorIcon
-                      module: OrchestratorPlugin
-                      name: orchestratorIcon
-                  dynamicRoutes:
-                    - importName: OrchestratorPage
-                      menuItem:
-                        icon: orchestratorIcon
-                        text: Orchestrator
-                      module: OrchestratorPlugin
-                      path: /orchestrator
+      - disabled: false
+        integrity: sha512-xwLJA197QiblD4ziBGP6W7Lf7VOStdyNLc+MmIarYu54ivaUh5nhucw1bLTub1jjvgIJ/2fwcmhP8lGXI79pSg==
+        package: '@caponetto-tests/backstage-plugin-orchestrator-backend-dynamic@0.0.10'
+        pluginConfig:
+          orchestrator:
+            dataIndexService:
+              url: http://sonataflow-platform-data-index-service.sonataflow-infra
+            editor:
+              path: https://sandbox.kie.org/swf-chrome-extension/0.32.0
+      - disabled: false
+        integrity: sha512-7Wur8JlvVCPG9afbcTp3Cy/BLnFtep+NoL4Z6cCbeeM1MSinhT1QP+kppuu5St8LdXCShfm2WsPDaxq/mWxAtA==
+        package: '@caponetto-tests/backstage-plugin-orchestrator@0.0.10'
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              caponetto-tests.backstage-plugin-orchestrator:
+                appIcons:
+                - importName: OrchestratorIcon
+                  module: OrchestratorPlugin
+                  name: orchestratorIcon
+                dynamicRoutes:
+                - importName: OrchestratorPage
+                  menuItem:
+                    icon: orchestratorIcon
+                    text: Orchestrator
+                  module: OrchestratorPlugin
+                  path: /orchestrator
   upstream:
     backstage:
       image:

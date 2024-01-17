@@ -54,7 +54,7 @@ backstage:
         pluginConfig:
           orchestrator:
             dataIndexService:
-              url: http://sonataflow-platform-data-index-service.sonataflow-infra
+              url: http://sonataflow-platform-data-index-service
             editor:
               path: https://sandbox.kie.org/swf-chrome-extension/0.32.0
       - disabled: false

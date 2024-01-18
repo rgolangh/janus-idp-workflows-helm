@@ -5,8 +5,17 @@ dependencies:
 - name: postgresql-persistent
   repository: https://sclorg.github.io/helm-charts
   version: 0.0.3
+- name: serverless-knative
+  repository: file://charts/serverless-knative
+  version: 0.1.0
+- name: sonataflow-operator
+  repository: file://charts/sonataflow-operator
+  version: 0.1.0
+- name: devmode
+  repository: file://charts/devmode
+  version: 0.1.0
 - name: workflows
   repository: https://rgolangh.github.io/serverless-workflows-helm
   version: 0.1.7
-digest: sha256:b4f400b9064856590b68dba178ff7e917be28d7c133c214c976e4b3cc1004136
-generated: "2024-01-04T14:42:14.406505676+02:00"
+digest: sha256:0f4526ff008a7c7248d0d63b99e3afdaad4fd26ed6bdadd79510ac39c2462f80
+generated: "2024-01-18T13:05:36.889300102+02:00"

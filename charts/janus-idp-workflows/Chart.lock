@@ -16,6 +16,6 @@ dependencies:
   version: 0.1.0
 - name: workflows
   repository: https://parodos.dev/serverless-workflows-helm
-  version: 0.1.7
-digest: sha256:8bd4c0f48be52ea907ce8870b8c7fb58dea0120fef0000c4ceb08be75008a586
-generated: "2024-01-25T16:38:37.626974821+01:00"
+  version: 0.2.0
+digest: sha256:7b9ec34ce721b383633fe4f48a2e0c3b430416f4d91a0707f7459ff2194a37aa
+generated: "2024-01-25T20:38:26.808340607+01:00"

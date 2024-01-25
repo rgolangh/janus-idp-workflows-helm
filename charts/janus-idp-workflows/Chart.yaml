@@ -25,7 +25,7 @@ dependencies:
     repository: "file://charts/devmode"
     version: "0.1.0"
   - name: workflows
-    repository: https://rgolangh.github.io/serverless-workflows-helm
-    version: "0.1.7"
+    repository: https://parodos.dev/serverless-workflows-helm
+    version: "0.2.0"
     condition: workflows.enabled
 

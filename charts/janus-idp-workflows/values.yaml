@@ -4,10 +4,6 @@ global:
   # false means kind, minikube
   openshift: true
  
-devmode:
-  enabled: false
-  image: quay.io/kiegroup/kogito-swf-devmode-nightly:main-2024-01-03
-
 sonataflow-operator:
   enabled: true
 
@@ -16,7 +12,7 @@ serverless-knative:
     enabled: true
 
 workflows:
-  enabled: false
+  enabled: true
 
 serviceAccountName: janus-idp-workflows-sa
 

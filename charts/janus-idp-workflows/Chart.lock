@@ -15,7 +15,7 @@ dependencies:
   repository: file://charts/devmode
   version: 0.1.0
 - name: workflows
-  repository: https://rgolangh.github.io/serverless-workflows-helm
-  version: 0.1.7
-digest: sha256:0f4526ff008a7c7248d0d63b99e3afdaad4fd26ed6bdadd79510ac39c2462f80
-generated: "2024-01-18T13:05:36.889300102+02:00"
+  repository: https://parodos.dev/serverless-workflows-helm
+  version: 0.2.0
+digest: sha256:7b9ec34ce721b383633fe4f48a2e0c3b430416f4d91a0707f7459ff2194a37aa
+generated: "2024-01-29T16:33:19.804854528+02:00"

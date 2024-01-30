@@ -25,3 +25,12 @@ spec:
               memory: 512Mi
     jobService:
       enabled: true
+      podTemplate:
+        container:
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 512Mi

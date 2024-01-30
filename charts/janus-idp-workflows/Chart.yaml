@@ -21,9 +21,6 @@ dependencies:
     repository: "file://charts/sonataflow-operator"
     version: "0.1.2"
     condition: sonataflow-operator.enabled
-  - name: devmode
-    repository: "file://charts/devmode"
-    version: "0.1.0"
   - name: workflows
     repository: https://parodos.dev/serverless-workflows-helm
     version: "0.2.0"

@@ -2,7 +2,7 @@ apiVersion: v2
 name: janus-idp-workflows
 description: A Helm chart for Kubernetes
 type: application
-version: 0.2.1
+version: 0.2.2
 appVersion: "0.0.1"
 
 dependencies:
@@ -16,11 +16,11 @@ dependencies:
   - name: serverless-knative
     repository: "file://charts/serverless-knative"
     version: "0.1.0"
-    condition: serverless-knative.enabled 
+    condition: serverless-knative.enabled
   - name: sonataflow-operator
     repository: "file://charts/sonataflow-operator"
-    version: "0.1.0"
-    condition: sonataflow-operator.enabled 
+    version: "0.1.1"
+    condition: sonataflow-operator.enabled
   - name: devmode
     repository: "file://charts/devmode"
     version: "0.1.0"
@@ -28,4 +28,3 @@ dependencies:
     repository: https://parodos.dev/serverless-workflows-helm
     version: "0.2.0"
     condition: workflows.enabled
-

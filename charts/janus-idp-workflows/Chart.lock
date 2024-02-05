@@ -10,12 +10,12 @@ dependencies:
   version: 0.1.0
 - name: sonataflow-operator
   repository: file://charts/sonataflow-operator
-  version: 0.1.1
+  version: 0.1.2
 - name: devmode
   repository: file://charts/devmode
   version: 0.1.0
 - name: workflows
   repository: https://parodos.dev/serverless-workflows-helm
   version: 0.2.0
-digest: sha256:fa3c0c3f648b84d79b46db548bbe6ac42e5ebf53576595088ef0d85ba00a8088
-generated: "2024-02-05T16:38:55.777689406+02:00"
+digest: sha256:23202cd0d9b6b62093260fe7b30d142f78ddc9cfce23c391b732007e2cd04966
+generated: "2024-02-05T18:37:25.580897584+02:00"

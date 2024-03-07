@@ -288,4 +288,38 @@ entries:
     urls:
     - https://github.com/rgolangh/janus-idp-workflows-helm/releases/download/janus-idp-workflows-0.1.1/janus-idp-workflows-0.1.1.tgz
     version: 0.1.1
-generated: "2024-02-06T08:30:42.742490174Z"
+  orchestrator-k8s:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-07T11:43:42.386614236Z"
+    dependencies:
+    - name: backstage
+      repository: https://janus-idp.github.io/helm-backstage
+      version: 2.11.4
+    - condition: postgresql-persistent.enabled
+      name: postgresql-persistent
+      repository: https://sclorg.github.io/helm-charts
+      version: 0.0.3
+    - condition: serverless-knative.enabled
+      name: serverless-knative
+      repository: file://charts/serverless-knative
+      version: 0.1.0
+    - condition: sonataflow-operator.enabled
+      name: sonataflow-operator
+      repository: file://charts/sonataflow-operator
+      version: 0.1.2
+    - condition: workflows.enabled
+      name: workflows
+      repository: https://parodos.dev/serverless-workflows-helm
+      version: 0.2.0
+    description: 'Helm chart to deploy the Orchestrator solution suite on Kubernetes,
+      including Janus IDP backstage, SonataFlow Operator, Knative Eventing and Knative
+      Serving. '
+    digest: d47f108fb24e455c64c4ab1469f40d5689b95f5a1b6ee082e262dd013e771176
+    icon: https://raw.githubusercontent.com/parodos-dev/parodos-dev.github.io/main/assets/images/WO_black.svg
+    name: orchestrator-k8s
+    type: application
+    urls:
+    - https://github.com/rgolangh/janus-idp-workflows-helm/releases/download/orchestrator-k8s-0.3.0/orchestrator-k8s-0.3.0.tgz
+    version: 0.3.0
+generated: "2024-03-07T11:43:42.386648179Z"

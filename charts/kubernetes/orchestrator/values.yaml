@@ -75,12 +75,27 @@ backstage:
     backstage:
       image:
         tag: next
+      extraEnvs:
+        secrets:
+          - name: backstagte-backend-auth-secret
+
       appConfig:
         integrations:
           github:
             - host: github.com
               token: "INSERT VALID TOKEN HERE"
         auth:
+          externalAccess:
+            - type: static
+              options:
+                token: ${ADMIN_CURL_TOKEN}
+                subject: admin-curl-access
+            - type: static
+              options:
+                token: ${ADMIN_CURL_TOKEN}
+                subject: notifications-access
+
+
           environment: development
           providers:
             github:

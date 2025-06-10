@@ -1,3 +1,6 @@
+> [!NOTE]
+> This repo is archived and the work moved to https://github.com/rhdhorchestrator/orchestrator-helm-chart/tree/main/charts/orchestrator-k8s
+
 # Janus-IDP-Workflows helm repo
 
 This chart will install Janus-IDP + Serverless Workflows.
